@@ -2,7 +2,10 @@ import express from "express";
 import { WebSocketServer, WebSocket } from "ws";
 
 const app = express();
-const httpserver = app.listen(3000);
+app.get("/home", (req, res) => {
+  res.send("This is the basic get route from server!!!");
+});
+const httpserver = app.listen(8080);
 const wss = new WebSocketServer({ server: httpserver });
 
 wss.on("connection", function connection(ws) {
